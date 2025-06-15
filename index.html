@@ -3,318 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bu site senin için</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Doğanın Çiçek Bahçesi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #ffebee, #fce4ec, #f8bbd0);
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f9f7fe, #e6f3ff);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            width: 90%;
-            max-width: 600px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            color: white;
+            padding: 2rem 0;
             text-align: center;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
         }
         
         h1 {
-            color: #e91e63;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .subtitle {
-            color: #880e4f;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            font-weight: 500;
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
         }
         
-        .name-input {
-            margin: 30px 0;
-            position: relative;
-        }
-        
-        .name-input label {
-            display: block;
-            color: #d81b60;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-        
-        .name-input input {
-            width: 80%;
-            padding: 15px;
-            border: 2px solid #f48fb1;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            text-align: center;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-        
-        .name-input input:focus {
-            border-color: #e91e63;
-            box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
-        }
-        
-        .message {
-            background: linear-gradient(45deg, #f8bbd0, #fce4ec);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 2px dashed #e91e63;
-        }
-        
-        .message p {
-            color: #880e4f;
-            font-size: 1.4rem;
-            font-weight: 600;
-            line-height: 1.6;
-        }
-        
-        .heart-btn {
-            background: linear-gradient(to right, #e91e63, #d81b60);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
-            margin-top: 20px;
-        }
-        
-        .heart-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.6);
-        }
-        
-        .heart-btn:active {
-            transform: translateY(1px);
-        }
-        
-        /* Dekoratif çiçekler */
-        .flower {
+        .flower-decoration {
             position: absolute;
-            z-index: 1;
-            opacity: 0.8;
             font-size: 2rem;
-            color: #e91e63;
-            animation: float 8s infinite ease-in-out;
+            opacity: 0.3;
+            z-index: 1;
         }
         
-        .flower:nth-child(1) {
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-            font-size: 2.5rem;
+        .flower-1 { top: 20px; left: 10%; animation: float 15s infinite ease-in-out; }
+        .flower-2 { top: 40px; right: 15%; animation: float 18s infinite ease-in-out; }
+        .flower-3 { bottom: 30px; left: 20%; animation: float 12s infinite ease-in-out; }
+        .flower-4 { bottom: 50px; right: 25%; animation: float 16s infinite ease-in-out; }
+        
+        nav {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        .flower:nth-child(2) {
-            top: 15%;
-            right: 15%;
-            animation-delay: 1s;
-            font-size: 3rem;
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
         }
         
-        .flower:nth-child(3) {
-            bottom: 10%;
-            left: 20%;
-            animation-delay: 2s;
+        .nav-item {
+            margin: 0 1.5rem;
+            font-weight: 500;
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
         }
         
-        .flower:nth-child(4) {
-            bottom: 15%;
-            right: 10%;
-            animation-delay: 3s;
-            font-size: 2.8rem;
+        .nav-item:hover {
+            color: #2E7D32;
         }
         
-        .flower:nth-child(5) {
-            top: 30%;
-            left: 5%;
-            animation-delay: 4s;
-        }
-        
-        /* Animasyonlu kalpler */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #e91e63;
-            transform: rotate(45deg);
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0;
-        }
-        
-        .heart:before, .heart:after {
+        .nav-item::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #e91e63;
-            border-radius: 50%;
-        }
-        
-        .heart:before {
-            top: -10px;
+            bottom: 0;
             left: 0;
+            width: 0;
+            height: 2px;
+            background: #4CAF50;
+            transition: width 0.3s ease;
         }
         
-        .heart:after {
-            top: 0;
-            left: -10px;
+        .nav-item:hover::after {
+            width: 100%;
         }
         
-        /* Animasyonlar */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero-text {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        .flower-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+        }
+        
+        .flower-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .flower-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .flower-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .flower-info {
+            padding: 1.5rem;
+        }
+        
+        .flower-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .flower-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .flower-symbol {
+            display: flex;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-top: 1rem;
+            color: #FF9800;
+        }
+        
+        .quote-section {
+            background: linear-gradient(rgba(76, 175, 80, 0.9), rgba(139, 195, 74, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234CAF50"/><path d="M20,20 Q40,5 60,20 T100,20 Q85,40 100,60 T100,100 Q60,85 20,100 T0,100 Q5,60 0,20 T20,20" fill="%238BC34A"/></svg>');
+            background-size: 200px;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin: 4rem 0;
+        }
+        
+        .quote {
+            font-size: 2rem;
+            font-family: 'Dancing Script', cursive;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        .author {
+            margin-top: 1.5rem;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        
+        .care-section {
+            padding: 4rem 0;
+            background-color: white;
+            border-radius: 20px;
+            margin: 4rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 3rem;
+        }
+        
+        .care-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .tip-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            background: #e8f5e9;
+            transform: scale(1.03);
+        }
+        
+        .tip-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tip-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2E7D32;
+        }
+        
+        footer {
+            background: linear-gradient(to right, #2E7D32, #4CAF50);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            color: #4CAF50;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: #e8f5e9;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         
-        @keyframes fall {
-            0% {
-                top: -10%;
-                opacity: 1;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-                width: 95%;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .message p {
-                font-size: 1.2rem;
-            }
-            
-            .name-input input {
-                width: 90%;
-            }
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .subtitle { font-size: 1.2rem; }
+            .quote { font-size: 1.5rem; }
+            .nav-container { flex-wrap: wrap; }
+            .nav-item { margin: 0.5rem 1rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Dekoratif çiçekler -->
-    <div class="flower"><i class="fas fa-spa"></i></div>
-    <div class="flower"><i class="fas fa-spa"></i></div>
-    <div class="flower"><i class="fas fa-spa"></i></div>
-    <div class="flower"><i class="fas fa-spa"></i></div>
-    <div class="flower"><i class="fas fa-spa"></i></div>
+    <header>
+        <div class="flower-decoration">🌸</div>
+        <div class="flower-decoration">🌺</div>
+        <div class="flower-decoration">🌼</div>
+        <div class="flower-decoration">🌻</div>
+        
+        <div class="container header-content">
+            <h1>Doğanın Çiçek Bahçesi</h1>
+            <p class="subtitle">Renklerin dans ettiği, kokuların ruhunuzu okşadığı bir dünyaya hoş geldiniz. En güzel çiçekler ve bakım ipuçları burada!</p>
+        </div>
+    </header>
     
-    <div class="container">
-        <h1>❤️ Her şey senin için ❤️</h1>
-        <div class="subtitle">Sevginin en güzel zamanlarında, kalbimdeki en özel yere...</div>
-        
-        <div class="name-input">
-        
-            <input type="text" id="name" placeholder="İsmini buraya yaz..." value="Esranur">
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="nav-item">Anasayfa</a>
+            <a href="#" class="nav-item">Çiçek Türleri</a>
+            <a href="#" class="nav-item">Bakım İpuçları</a>
+            <a href="#" class="nav-item">Bahçe Tasarımı</a>
+            <a href="#" class="nav-item">İletişim</a>
         </div>
-        
-        <div class="message">
-            <p id="message-text">İsmini yazdıktan sonra kalbe bas ve mesajını gör!</p>
-        </div>
-        
-        <button class="heart-btn" id="show-message"><i class="fas fa-heart"></i> Mesajı Göster</button>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const nameInput = document.getElementById('name');
-            const messageText = document.getElementById('message-text');
-            const showMessageBtn = document.getElementById('show-message');
+    </nav>
+    
+    <section class="hero">
+        <div class="container">
+            <p class="hero-text">Çiçekler, doğanın bize sunduğu en güzel armağanlardan biridir. Her biri kendine özgü renkleri, şekilleri ve kokularıyla yaşamımıza neşe katar. Siz de çiçeklerin büyülü dünyasını keşfedin!</p>
             
-            showMessageBtn.addEventListener('click', function() {
-                const name = nameInput.value.trim();
+            <div class="flower-gallery">
+                <div class="flower-card">
+                    <div class="flower-image" style="background: linear-gradient(45deg, #ff9a9e, #fad0c4);"></div>
+                    <div class="flower-info">
+                        <h3 class="flower-name">Gül</h3>
+                        <p class="flower-desc">Aşkın ve tutkunun sembolü. Yüzlerce çeşidi ve rengiyle dünyanın en popüler çiçeği.</p>
+                        <div class="flower-symbol">🌹</div>
+                    </div>
+                </div>
                 
-                if (name) {
-                    const messages = [
-                        `${name}, kalbimde açan en güzel çiçeksin! ❤️`,
-                        `Seni her gün daha çok seviyorum ${name}! 🌹`,
-                        `Hayatımın anlamı ${name}, Sevgililer Günün kutlu olsun! 💌`,
-                        `Sana olan sevgim, bu dünyadaki tüm çiçeklerden daha güzel ${name}! 🌸`,
-                        `Seninle her an özel ${name}, bugün daha da özel! 💝`
-                    ];
-                    
-                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-                    messageText.innerHTML = randomMessage;
-                    
-                    // Kalp animasyonu oluştur
-                    createHearts();
-                } else {
-                    messageText.textContent = 'Lütfen sevgilinin ismini yaz!';
-                }
-            });
+                <div class="flower-card">
+                    <div class="flower-image" style="background: linear-gradient(45deg, #a1c4fd, #c2e9fb);"></div>
+                    <div class="flower-info">
+                        <h3 class="flower-name">Lale</h3>
+                        <p class="flower-desc">Baharın müjdecisi. Zarif yapısı ve canlı renkleriyle bahçeleri süsler.</p>
+                        <div class="flower-symbol">🌷</div>
+                    </div>
+                </div>
+                
+                <div class="flower-card">
+                    <div class="flower-image" style="background: linear-gradient(45deg, #d4fc79, #96e6a1);"></div>
+                    <div class="flower-info">
+                        <h3 class="flower-name">Papatya</h3>
+                        <p class="flower-desc">Masumiyetin ve saflığın sembolü. Basit güzelliği ve dayanıklılığıyla bilinir.</p>
+                        <div class="flower-symbol">🌼</div>
+                    </div>
+                </div>
+                
+                <div class="flower-card">
+                    <div class="flower-image" style="background: linear-gradient(45deg, #f6d365, #fda085);"></div>
+                    <div class="flower-info">
+                        <h3 class="flower-name">Orkide</h3>
+                        <p class="flower-desc">Egzotik güzelliği ve zarafetiyle dikkat çeker. Bakımı özen isteyen nadide çiçeklerdendir.</p>
+                        <div class="flower-symbol">🌸</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="quote-section">
+        <div class="container">
+            <p class="quote">"Çiçekler, güneşin yeryüzüne gülümsemesidir."</p>
+            <p class="author">- Ralph Waldo Emerson</p>
+        </div>
+    </section>
+    
+    <section class="care-section">
+        <div class="container">
+            <h2 class="section-title">Çiçek Bakım İpuçları</h2>
             
-            function createHearts() {
-                // Ekranda 50 kalp oluştur
-                for (let i = 0; i < 50; i++) {
-                    setTimeout(() => {
-                        const heart = document.createElement('div');
-                        heart.classList.add('heart');
-                        
-                        // Rastgele pozisyon
-                        const left = Math.random() * 100;
-                        const animationDuration = Math.random() * 3 + 2; // 2-5 saniye
-                        const size = Math.random() * 20 + 10; // 10-30px
-                        
-                        heart.style.left = `${left}vw`;
-                        heart.style.width = `${size}px`;
-                        heart.style.height = `${size}px`;
-                        heart.style.animation = `fall ${animationDuration}s linear forwards`;
-                        
-                        document.body.appendChild(heart);
-                        
-                        // Kalbi temizle
-                        setTimeout(() => {
-                            heart.remove();
-                        }, animationDuration * 1000);
-                    }, i * 100);
-                }
-            }
-        });
-    </script>
+            <div class="care-tips">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3 class="tip-title">Sulama</h3>
+                    <p>Çiçeklerinizi aşırı sulamaktan kaçının. Toprağın üst yüzeyi kurudukça sulama yapın.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3 class="tip-title">Işık İhtiyacı</h3>
+                    <p>Her çiçeğin ışık ihtiyacı farklıdır. Bitkinizi tanıyın ve uygun konumlandırın.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-temperature-high"></i>
+                    </div>
+                    <h3 class="tip-title">Sıcaklık</h3>
+                    <p>Çoğu çiçek 18-24°C arası sıcaklıkları sever. Aşırı sıcak veya soğuktan koruyun.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">Doğanın Çiçek Bahçesi</h3>
+                <p>Çiçek sevgisini paylaşanlar için bir bilgi ve ilham kaynağı.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Hızlı Erişim</h3>
+                <p><a href="#" style="color: white; text-decoration: none;">Çiçek Türleri</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">Bakım Rehberi</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">Bahçe Tasarım Fikirleri</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">Sıkça Sorulan Sorular</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">İletişim</h3>
+                <p><i class="fas fa-envelope"></i> info@cicekbahcesi.com</p>
+                <p><i class="fas fa-phone"></i> +90 555 123 4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Doğanın Çiçek Bahçesi. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
 </body>
 </html>
